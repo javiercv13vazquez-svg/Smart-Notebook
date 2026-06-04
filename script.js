@@ -2,9 +2,11 @@
 // Abre la app desde http://localhost:3000 (node server.js) o define el puerto abajo.
 
 function getApiBase() {
-  if (window.location.port === '3000' || window.location.port === '3001') {
-    return window.location.origin;
+  // Si la página se está ejecutando en internet (como en Render)
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1' && window.location.protocol !== 'file:') {
+    return window.location.origin; 
   }
+  // Si la estás abriendo localmente en tu computadora
   return 'http://localhost:3000';
 }
 
